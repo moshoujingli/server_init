@@ -1,0 +1,27 @@
+{
+    "name":"dev_web_local",
+    "description": "Use for configure a local dev web server",
+    "json_class": "Chef::Role",
+    "chef_type": "role",
+    "default_attributes":{
+        "user":"greal",
+        "passwd":"changeit",
+        "apache2":{
+            "port":[80,8080,443],
+            "web_root":["/home/greal/webapp/"],
+            "server_name":"masaker.com",
+            "host_name":"masaker.com"
+        },
+        "mysql":{
+            "user":"root",
+            "passwd":"changeit"
+        }
+    },
+    "run_list": [
+        "recipe[apache2]",
+        "recipe[php]",
+        "recipe[mysql]",
+        "recipe[memcached]"
+    ]
+
+}
