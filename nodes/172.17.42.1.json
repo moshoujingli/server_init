@@ -1,15 +1,10 @@
 {
-    "run_list":[
-        "role[dev_web_test]"
-    ],
-    "install_prefix":{
-        "apache2":"/usr/local/apache2",
-        "php":"/usr/local/php",
-        "mysql":"/usr/local/mysql"
+    "pref":{
+        "user": "greal",
+        "passwd": "chenggit111",
+        "common_prefix": "/usr/local/"
     },
-    "os":{
-        "name":"centos",
-        "version":"6",
-        "platform":"x86_64"
-    }
+    "run_list":[
+        "role[dev_web_local]"
+    ]
 }

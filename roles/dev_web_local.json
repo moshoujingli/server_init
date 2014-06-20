@@ -3,25 +3,35 @@
     "description": "Use for configure a local dev web server",
     "json_class": "Chef::Role",
     "chef_type": "role",
-    "default_attributes":{
-        "user":"greal",
-        "passwd":"changeit",
-        "apache2":{
-            "port":[80,8080,443],
-            "web_root":["/home/greal/webapp/"],
-            "server_name":"masaker.com",
-            "host_name":"masaker.com"
+    "override_attributes": {
+        "apache2": {
         },
-        "mysql":{
-            "user":"root",
-            "passwd":"changeit"
+        "mysql": {
+            "service_name": "mysqld",
+            "server_root_password": "changeit",
+            "port": "3306",
+            "allow_remote_root": true,
+            "remove_anonymous_users": true,
+            "root_network_acl": ["192.158.56.1"]
+        },
+        "memcached": {
+            "memory": "64MB",
+            "user": "root",
+            "port": "11211",
+            "listen": "localhost",
+            "maxconn": "1024",
+            "logfilename": "memcached.log"
+        },
+        "php": {
+            "install_method" : "source",
+            "apxs" : "/usr/sbin/apxs"
         }
     },
     "run_list": [
         "recipe[apache2]",
-        "recipe[php]",
-        "recipe[mysql]",
-        "recipe[memcached]"
+        "recipe[mysql::server]",
+        "recipe[memcached]",
+        "recipe[php]"
     ]
 
 }

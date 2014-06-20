@@ -3,7 +3,13 @@
     "description": "Use for configure a local dev web server",
     "json_class": "Chef::Role",
     "chef_type": "role",
-    "default_attributes":{
+    "override_attributes": {
+      "php": {
+        "install_method" : "source",
+        "apache2" : "/usr/local/apache2/"
+      }
+    },
+    "default_attributes": {
         "user":"greal",
         "passwd":"changeit",
         "apr":{"src_url":["http://ftp.riken.jp/net/apache//apr/apr-1.5.1.tar.gz"]},
@@ -15,29 +21,17 @@
             "web_root":["/home/greal/webapp/"],
             "server_name":"masaker.com",
             "host_name":"masaker.com",
-            "build_options":"--with-included-apr --enable-nonportable-atomics=yes --with-z"
+            "build_options":" --enable-so --with-included-apr --enable-nonportable-atomics=yes --with-z"
         },
         "mysql":{
             "local_path":"/usr/local/mysql",
             "src_url":["https://drive.google.com/uc?export=download&confirm=FWM-&id=0BxkUB7lvWaawMXhvaW1TSjdsLWs","https://s3-ap-northeast-1.amazonaws.com/servercomp/MySQL-5.6.19-1.el6.x86_64.rpm-bundle.tar"],
             "user":"root",
             "passwd":"changeit"
-        },
-        "php":{
-            "local_path":"/usr/local/php",
-            "src_url":["http://jp1.php.net/get/php-5.5.13.tar.gz/from/this/mirror","https://s3-ap-northeast-1.amazonaws.com/servercomp/php-5.5.13.tar.gz"],
-            "packages":["m4","autoconf","libxml2-devel","openssl","openssl-devel","zlib-devel","curl-devel","pcre-devel","libtool-libs","libtool-ltdl-devel","libjpeg-devel","libpng-devel","freetype-devel","mhash-devel","libmcrypt-devel"],
-            "rpms":[
-                "libmcrypt-2.5.7-1.2.el6.rf",
-                "libmcrypt-devel-2.5.7-1.2.el6.rf",
-                "mhash-0.9.9.9-3.el6",
-                "mhash-devel-0.9.9.9-3.el6"
-            ],
-            "build_options":"--with-config-file-path=/usr/local/php/etc --with-apxs2=/usr/local/apache2/bin/apxs --enable-bcmath --enable-mbstring --enable-sockets --enable-zip  --with-mysql=mysqlnd --with-mysqli=mysqlnd --with-pdo-mysql=mysqlnd --without-pear --with-libdir=lib64 --disable-fileinfo"
         }
     },
     "run_list": [
-        // "recipe[apache2]",
+        "recipe[apache2]",
         "recipe[php]"
         // "recipe[mysql]"
     ]
