@@ -1,8 +1,9 @@
 {
-    "pref":{
+    "pref": {
         "user": "greal",
         "passwd": "chenggit111",
-        "common_prefix": "/usr/local/"
+        "prefix": "/usr/local/",
+        "ssh-key": "ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEA534RT6Q3CqjPyWKrsYFfnAA0RbKLXbbm6n2ZeWoAyGWJ6MbX9/8oBucrIoNhxMxazU9/K7IofNcCT0SteO63IU5kXYdvOO4Lw/KveD04DcpgUbdgvy24enfUwRo77NiAk9HUrtAZJyENeLsL/2Z7gpALYOQRgIGZRycoZqm3PpaR0M83EwuZS8yQ2ZxU4rdy0iWF9MdPRzL8KBL4oYOlDI7iTUVtghXxIz56CidThPasjsu3kxQFYDZ2BKlv2tkA1lIylvrCsu209ZpBM4OUAMvh0cvQpiJ2LunHNEQ57pSEG7H0BiZRBM0rUE+7fbpcm6iqj1YglNj5OyueXCVA5Q== root@localhost.localdomain"
     },
     "run_list":[
         "role[dev_web_local]"
