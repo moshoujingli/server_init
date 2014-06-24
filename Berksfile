@@ -4,7 +4,7 @@ metadata
 
 cookbook 'user'
 cookbook 'sudo'
-cookbook 'php'
+cookbook 'php',git: 'https://github.com/moshoujingli/php.git'
 cookbook 'mysql'
 cookbook 'memcached'
 cookbook 'apache2', git: 'https://github.com/moshoujingli/apache2.git'

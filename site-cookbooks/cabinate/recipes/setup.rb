@@ -1,5 +1,4 @@
 user_account node['pref']['user'] do
-  ssh_keys  [node['pref']['ssh-key']]
   home      "/home/#{node['pref']['user']}"
 end
 
